@@ -27,13 +27,13 @@ export default function Hero() {
           </h1>
           
           <p className="text-xl md:text-2xl mb-8 text-contrast-medium-dark leading-relaxed drop-shadow-md">
-            Discover Down to Earth Farmstead. We believe healthy, farm-fresh food shouldn't go to waste, 
-            which is why we're passionate about real food preservation.
+            Discover Down to Earth Farmstead. We believe healthy, farm-fresh food shouldn&apos;t go to waste, 
+            which is why we&apos;re passionate about real food preservation.
           </p>
 
           <p className="text-lg mb-10 text-contrast-low-dark drop-shadow-md">
             From fresh produce to convenient freeze-dried staples like eggs and fruit, 
-            and our canned goods, we're making the goodness of the farm accessible to everyone, 
+            and our canned goods, we&apos;re making the goodness of the farm accessible to everyone, 
             ensuring wholesome options are always within reach.
           </p>
 

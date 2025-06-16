@@ -341,7 +341,7 @@ export default function WhatIsFreezeDryingPage() {
           </h2>
           <p className="text-xl mb-8 text-primary-foreground/90">
             Whether you want to try our freeze-dried products or preserve your own harvest, 
-            we're here to help you discover the benefits of this amazing technology.
+            we&apos;re here to help you discover the benefits of this amazing technology.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button asChild size="lg" variant="secondary">

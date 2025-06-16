@@ -38,7 +38,7 @@ export default function ValueProposition() {
             The Down to Earth Difference
           </h2>
           <p className="text-lg text-contrast-medium-light max-w-2xl mx-auto">
-            We're not just another farm. We're your partner in sustainable, 
+            We&apos;re not just another farm. We&apos;re your partner in sustainable, 
             long-term food security.
           </p>
         </div>

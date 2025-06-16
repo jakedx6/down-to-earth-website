@@ -94,3 +94,44 @@ npm run lint      # Run ESLint
 - Local business focus with clean, modern aesthetic
 - Accessible component system via shadcn/ui
 - Consistent design language throughout
+
+## Git Workflow
+
+### Repository
+- **GitHub**: https://github.com/jakedx6/down-to-earth-website
+- **Main Branch**: `main` (production-ready code)
+
+### Branching Strategy
+- `feature/[name]` - New features
+- `fix/[name]` - Bug fixes  
+- `content/[name]` - Content updates
+
+### Workflow
+```bash
+# Start new work
+git checkout main && git pull origin main
+git checkout -b feature/your-feature-name
+
+# During development
+git add . && git commit -m "Clear description of changes"
+git push -u origin feature/your-feature-name
+
+# Complete work
+git checkout main && git pull origin main
+git checkout feature/your-feature-name && git merge main
+npm run lint && npm run build  # Quality checks
+git checkout main && git merge feature/your-feature-name
+git push origin main
+git branch -d feature/your-feature-name
+```
+
+### Commit Format
+```
+[type]: Brief description
+
+- Key changes made
+- Important notes
+
+🤖 Generated with [Claude Code](https://claude.ai/code)
+Co-Authored-By: Claude <noreply@anthropic.com>
+```

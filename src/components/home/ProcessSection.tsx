@@ -43,7 +43,7 @@ export default function ProcessSection() {
             Fresh Food That Fits Your Life
           </h2>
           <p className="text-lg text-contrast-medium-light max-w-3xl mx-auto">
-            We believe healthy eating shouldn't be a struggle. That's why we offer both fresh-from-the-farm 
+            We believe healthy eating shouldn&apos;t be a struggle. That&apos;s why we offer both fresh-from-the-farm 
             products and perfectly preserved options that work with your real life, not against it.
           </p>
         </div>

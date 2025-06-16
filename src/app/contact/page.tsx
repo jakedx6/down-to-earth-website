@@ -1,55 +1,27 @@
-'use client'
-
 import Layout from '@/components/layout/Layout'
-import { useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { MapPin, Mail, Phone, Clock, CheckCircle } from 'lucide-react'
 
 export default function ContactPage() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    subject: '',
-    message: '',
-    serviceType: 'general'
-  })
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // Handle form submission - for now just log the data
-    console.log('Form submitted:', formData)
-    // In a real app, you would send this to your backend
-    alert('Thank you for your message! We will get back to you soon.')
-  }
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    })
-  }
-
   return (
     <Layout>
       {/* Clean Hero Section */}
       <section className="bg-gradient-to-b from-gray-50 to-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Badge variant="outline" className="mb-4">
-            Contact Us
+            Get In Touch
           </Badge>
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-contrast-high-light mb-6">
-            Get in Touch
+            Contact Down to Earth Farmstead
           </h1>
           <p className="text-xl text-contrast-medium-light max-w-3xl mx-auto">
             Ready to place an order or have questions about our farm-fresh products? 
-            We're here to help with all your food preservation and farming needs.
+            We&apos;re here to help with all your food preservation and farming needs.
           </p>
         </div>
       </section>
@@ -64,16 +36,31 @@ export default function ContactPage() {
                 Send a Message
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-contrast-high-light mb-6">
-                Let's Start a Conversation
+                Let&apos;s Start a Conversation
               </h2>
               <p className="text-lg text-contrast-medium-light mb-8">
-                Whether you're interested in our products, have questions about our services, 
-                or want to learn more about our farm, we'd love to hear from you.
+                Whether you&apos;re interested in our products, have questions about our services, 
+                or want to learn more about our farm, we&apos;d love to hear from you.
               </p>
               
               <Card className="border">
                 <CardContent className="p-6">
-                  <form onSubmit={handleSubmit} className="space-y-6">
+                  <form 
+                    name="contact" 
+                    method="POST" 
+                    data-netlify="true" 
+                    data-netlify-honeypot="bot-field"
+                    className="space-y-6"
+                  >
+                    {/* Hidden field for Netlify Forms */}
+                    <input type="hidden" name="form-name" value="contact" />
+                    
+                    {/* Hidden honeypot field for bot protection */}
+                    <div className="hidden">
+                      <Label htmlFor="bot-field">Don&apos;t fill this out if you&apos;re human:</Label>
+                      <Input id="bot-field" name="bot-field" />
+                    </div>
+
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="name">Name *</Label>
@@ -81,8 +68,7 @@ export default function ContactPage() {
                           id="name"
                           name="name"
                           required
-                          value={formData.name}
-                          onChange={handleChange}
+                          placeholder="Your full name"
                         />
                       </div>
                       
@@ -93,8 +79,7 @@ export default function ContactPage() {
                           name="email"
                           type="email"
                           required
-                          value={formData.email}
-                          onChange={handleChange}
+                          placeholder="your.email@example.com"
                         />
                       </div>
                     </div>
@@ -105,25 +90,25 @@ export default function ContactPage() {
                         id="phone"
                         name="phone"
                         type="tel"
-                        value={formData.phone}
-                        onChange={handleChange}
+                        placeholder="(555) 123-4567"
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <Label htmlFor="serviceType">What can we help you with?</Label>
-                      <Select value={formData.serviceType} onValueChange={(value) => setFormData({...formData, serviceType: value})}>
-                        <SelectTrigger>
-                          <SelectValue />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="general">General Inquiry</SelectItem>
-                          <SelectItem value="order">Product Order</SelectItem>
-                          <SelectItem value="freeze-drying">Custom Freeze-Drying Service</SelectItem>
-                          <SelectItem value="seasonal">Seasonal Produce Availability</SelectItem>
-                          <SelectItem value="wholesale">Wholesale/Bulk Orders</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <Label htmlFor="service-type">What can we help you with?</Label>
+                      <select 
+                        id="service-type"
+                        name="service-type"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+                        defaultValue="general"
+                      >
+                        <option value="general">General Inquiry</option>
+                        <option value="fresh-eggs">Fresh Eggs Order</option>
+                        <option value="freeze-dried">Freeze-Dried Products</option>
+                        <option value="custom-service">Custom Freeze-Drying Service</option>
+                        <option value="wholesale">Wholesale/Bulk Orders</option>
+                        <option value="other">Other</option>
+                      </select>
                     </div>
 
                     <div className="space-y-2">
@@ -131,8 +116,7 @@ export default function ContactPage() {
                       <Input
                         id="subject"
                         name="subject"
-                        value={formData.subject}
-                        onChange={handleChange}
+                        placeholder="Brief description of your inquiry"
                       />
                     </div>
 
@@ -142,14 +126,12 @@ export default function ContactPage() {
                         id="message"
                         name="message"
                         required
-                        rows={6}
-                        value={formData.message}
-                        onChange={handleChange}
-                        placeholder="Tell us about your needs, questions, or how we can help..."
+                        placeholder="Tell us more about what you need..."
+                        className="min-h-[120px]"
                       />
                     </div>
 
-                    <Button type="submit" className="w-full">
+                    <Button type="submit" className="w-full" size="lg">
                       Send Message
                     </Button>
                   </form>
@@ -158,99 +140,161 @@ export default function ContactPage() {
             </div>
 
             {/* Contact Information */}
-            <div className="space-y-8">
-              {/* Farm Info */}
-              <Card className="border">
-                <CardHeader>
-                  <CardTitle className="flex items-center">
-                    <MapPin className="h-5 w-5 mr-2 text-primary" />
-                    Farm Information
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-start space-x-4">
-                    <MapPin className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-contrast-high-light">Location</h3>
-                      <p className="text-contrast-medium-light">Iowa Farm<br />Contact us for exact address</p>
+            <div>
+              <Badge variant="outline" className="mb-4">
+                Farm Information
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold text-contrast-high-light mb-6">
+                Visit Our Farm
+              </h2>
+              <p className="text-lg text-contrast-medium-light mb-8">
+                Located just south of Des Moines, Iowa, our 6-acre farmstead is where the magic happens. 
+                While we primarily work by appointment, we&apos;d love to show you around our operation.
+              </p>
+
+              <div className="space-y-6">
+                {/* Location */}
+                <Card className="border">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-contrast-high-light">
+                      <MapPin className="mr-3 h-5 w-5 text-primary" />
+                      Location
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-contrast-medium-light">
+                      Just south of Des Moines, Iowa<br />
+                      <em>Exact address provided upon scheduling visit</em>
+                    </p>
+                  </CardContent>
+                </Card>
+
+                {/* Contact Methods */}
+                <Card className="border">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-contrast-high-light">
+                      <Mail className="mr-3 h-5 w-5 text-primary" />
+                      Get In Touch
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <div className="flex items-center">
+                      <Phone className="mr-3 h-4 w-4 text-primary" />
+                      <span className="text-contrast-medium-light">Contact form preferred</span>
                     </div>
-                  </div>
-
-                  <div className="flex items-start space-x-4">
-                    <Mail className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-contrast-high-light">Email</h3>
-                      <p className="text-contrast-medium-light">Contact us through the form for fastest response</p>
+                    <div className="flex items-center">
+                      <Mail className="mr-3 h-4 w-4 text-primary" />
+                      <span className="text-contrast-medium-light">Response within 24 hours</span>
                     </div>
-                  </div>
+                  </CardContent>
+                </Card>
 
-                  <div className="flex items-start space-x-4">
-                    <Phone className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-contrast-high-light">Phone</h3>
-                      <p className="text-contrast-medium-light">Available through contact form</p>
+                {/* Hours */}
+                <Card className="border">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-contrast-high-light">
+                      <Clock className="mr-3 h-5 w-5 text-primary" />
+                      Farm Hours
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <div className="space-y-2 text-contrast-medium-light">
+                      <div className="flex justify-between">
+                        <span>Pickup/Delivery:</span>
+                        <span>Tuesday - Saturday</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Farm Visits:</span>
+                        <span>By appointment only</span>
+                      </div>
+                      <div className="flex justify-between">
+                        <span>Response Time:</span>
+                        <span>Within 24 hours</span>
+                      </div>
                     </div>
-                  </div>
+                  </CardContent>
+                </Card>
 
-                  <div className="flex items-start space-x-4">
-                    <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
-                    <div>
-                      <h3 className="font-semibold text-contrast-high-light">Response Time</h3>
-                      <p className="text-contrast-medium-light">We typically respond within 24 hours</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Services Overview */}
-              <Card className="border">
-                <CardHeader>
-                  <CardTitle>Our Services</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    <span className="text-contrast-medium-light">Fresh farm eggs ($5/dozen)</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    <span className="text-contrast-medium-light">Freeze-dried eggs ($12/dozen)</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    <span className="text-contrast-medium-light">Custom freeze-drying ($10)</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    <span className="text-contrast-medium-light">Seasonal fresh produce</span>
-                  </div>
-                  
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle className="w-5 h-5 text-primary" />
-                    <span className="text-contrast-medium-light">Fresh garlic (seasonal)</span>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Why Contact Us */}
-              <Card className="bg-secondary border">
-                <CardHeader>
-                  <CardTitle>Why Contact Us?</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 text-contrast-high-light">
-                    <li>• Custom orders and bulk pricing</li>
-                    <li>• Seasonal availability updates</li>
-                    <li>• Freeze-drying service scheduling</li>
-                    <li>• Product recommendations</li>
-                    <li>• Farm visits and consultations</li>
-                  </ul>
-                </CardContent>
-              </Card>
+                {/* What to Expect */}
+                <Card className="border bg-gray-50">
+                  <CardHeader>
+                    <CardTitle className="flex items-center text-contrast-high-light">
+                      <CheckCircle className="mr-3 h-5 w-5 text-primary" />
+                      What to Expect
+                    </CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <ul className="space-y-2 text-contrast-medium-light">
+                      <li>• Response within 24 hours</li>
+                      <li>• Product availability confirmation</li>
+                      <li>• Pickup/delivery scheduling</li>
+                      <li>• Custom service consultation</li>
+                      <li>• Farm visit coordination</li>
+                    </ul>
+                  </CardContent>
+                </Card>
+              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <Badge variant="secondary" className="mb-4">
+              Quick Answers
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold text-contrast-high-light mb-4">
+              Frequently Asked Questions
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <Card className="border">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-contrast-high-light mb-2">
+                  How do I place an order?
+                </h3>
+                <p className="text-contrast-medium-light text-sm">
+                  Use the contact form above or call us directly. We&apos;ll confirm availability and arrange pickup or delivery.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-contrast-high-light mb-2">
+                  Do you deliver?
+                </h3>
+                <p className="text-contrast-medium-light text-sm">
+                  Yes! We offer local delivery within 15 miles of our farm. Delivery fees may apply based on distance.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-contrast-high-light mb-2">
+                  What payment methods do you accept?
+                </h3>
+                <p className="text-contrast-medium-light text-sm">
+                  We accept cash, check, and most major credit cards. Payment is typically collected at pickup or delivery.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-contrast-high-light mb-2">
+                  Can I visit the farm?
+                </h3>
+                <p className="text-contrast-medium-light text-sm">
+                  Absolutely! We love showing people our operation. Farm visits are by appointment only for the safety of our animals.
+                </p>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>

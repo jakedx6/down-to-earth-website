@@ -24,7 +24,7 @@ export default function CleanHero() {
           
           {/* Tagline */}
           <Badge variant="secondary" className="mb-6 px-4 py-1">
-            Iowa's Premier Farm-to-Table Experience
+            Iowa&apos;s Premier Farm-to-Table Experience
           </Badge>
           
           {/* Main Heading */}
@@ -35,7 +35,7 @@ export default function CleanHero() {
           
           {/* Subheading */}
           <p className="text-xl md:text-2xl text-contrast-medium-light mb-8 leading-relaxed max-w-3xl mx-auto">
-            Life gets busy. Eating well shouldn't be a chore. At Down to Earth Farmstead, we offer the best of our harvest, both fresh from the field and perfectly preserved. Enjoy healthy, delicious food that fits your schedule, so nothing goes to waste.
+            Life gets busy. Eating well shouldn&apos;t be a chore. At Down to Earth Farmstead, we offer the best of our harvest, both fresh from the field and perfectly preserved. Enjoy healthy, delicious food that fits your schedule, so nothing goes to waste.
           </p>
 
           {/* CTA Buttons */}

@@ -126,7 +126,7 @@ export default async function ArticlesPage() {
                 Articles Coming Soon
               </h2>
               <p className="text-lg text-contrast-medium-light max-w-2xl mx-auto">
-                We're currently developing our educational article system. Check back soon for 
+                We&apos;re currently developing our educational article system. Check back soon for 
                 comprehensive guides on food preservation, farming techniques, and sustainable living.
               </p>
             </div>
