@@ -1,4 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
+'use client'
+
 import Layout from '@/components/layout/Layout'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -7,8 +9,38 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Textarea } from '@/components/ui/textarea'
 import { MapPin, Mail, Phone, Clock, CheckCircle } from 'lucide-react'
+import { useState } from 'react'
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const formData = new FormData(event.currentTarget)
+      
+      const response = await fetch('/contact-form.html', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      })
+
+      if (response.ok) {
+        // Redirect to success page
+        window.location.href = '/contact/success'
+      } else {
+        throw new Error('Form submission failed')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      alert('There was an error submitting your message. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <Layout>
       {/* Clean Hero Section */}
@@ -47,11 +79,7 @@ export default function ContactPage() {
               <Card className="border">
                 <CardContent className="p-6">
                   <form 
-                    name="contact" 
-                    method="POST" 
-                    action="/contact/success"
-                    data-netlify="true" 
-                    data-netlify-honeypot="bot-field"
+                    onSubmit={handleFormSubmit}
                     className="space-y-6"
                   >
                     {/* Hidden field for Netlify Forms */}
@@ -131,8 +159,8 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    <Button type="submit" className="w-full" size="lg">
-                      Send Message
+                    <Button type="submit" className="w-full" size="lg" disabled={isSubmitting}>
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
                     </Button>
                   </form>
                 </CardContent>
