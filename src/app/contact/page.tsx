@@ -21,7 +21,7 @@ export default function ContactPage() {
           </h1>
           <p className="text-xl text-contrast-medium-light max-w-3xl mx-auto">
             Ready to place an order or have questions about our farm-fresh products? 
-            We&apos;re here to help with all your food preservation and farming needs.
+            We're here to help with all your food preservation and farming needs.
           </p>
         </div>
       </section>
@@ -36,11 +36,11 @@ export default function ContactPage() {
                 Send a Message
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-contrast-high-light mb-6">
-                Let&apos;s Start a Conversation
+                Let's Start a Conversation
               </h2>
               <p className="text-lg text-contrast-medium-light mb-8">
-                Whether you&apos;re interested in our products, have questions about our services, 
-                or want to learn more about our farm, we&apos;d love to hear from you.
+                Whether you're interested in our products, have questions about our services, 
+                or want to learn more about our farm, we'd love to hear from you.
               </p>
               
               <Card className="border">
@@ -57,10 +57,7 @@ export default function ContactPage() {
                     <input type="hidden" name="form-name" value="contact" />
                     
                     {/* Hidden honeypot field for bot protection */}
-                    <div className="hidden">
-                      <Label htmlFor="bot-field">Don&apos;t fill this out if you&apos;re human:</Label>
-                      <Input id="bot-field" name="bot-field" />
-                    </div>
+                    <input name="bot-field" style={{ display: 'none' }} />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
@@ -151,7 +148,7 @@ export default function ContactPage() {
               </h2>
               <p className="text-lg text-contrast-medium-light mb-8">
                 Located just south of Des Moines, Iowa, our 6-acre farmstead is where the magic happens. 
-                While we primarily work by appointment, we&apos;d love to show you around our operation.
+                While we primarily work by appointment, we'd love to show you around our operation.
               </p>
 
               <div className="space-y-6">
@@ -269,7 +266,7 @@ export default function ContactPage() {
                   How do I place an order?
                 </h3>
                 <p className="text-contrast-medium-light text-sm">
-                  Use the contact form above or call us directly. We&apos;ll confirm availability and arrange pickup or delivery.
+                  Use the contact form above or call us directly. We'll confirm availability and arrange pickup or delivery.
                 </p>
               </CardContent>
             </Card>
@@ -321,7 +318,7 @@ export default function ContactPage() {
             <Card className="border">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-contrast-high-light mb-2">
-                  Why can&apos;t fresh products be shipped?
+                  Why can't fresh products be shipped?
                 </h3>
                 <p className="text-contrast-medium-light text-sm">
                   Fresh eggs require refrigeration and have a shorter shelf life, making them best suited for local pickup or delivery to ensure quality.

@@ -7,10 +7,10 @@
   <!-- This form is for Netlify form detection only - hidden from users -->
   <form name="contact" method="POST" action="/contact/success" data-netlify="true" data-netlify-honeypot="bot-field" hidden>
     <input type="hidden" name="form-name" value="contact" />
-    <input name="bot-field" />
-    <input name="name" />
-    <input name="email" />
-    <input name="phone" />
+    <input name="bot-field" style="display: none" />
+    <input name="name" required />
+    <input name="email" type="email" required />
+    <input name="phone" type="tel" />
     <select name="service-type">
       <option value="general">General Inquiry</option>
       <option value="fresh-eggs">Fresh Eggs Order</option>
@@ -21,7 +21,7 @@
       <option value="other">Other</option>
     </select>
     <input name="subject" />
-    <textarea name="message"></textarea>
+    <textarea name="message" required></textarea>
   </form>
 </body>
 </html>
