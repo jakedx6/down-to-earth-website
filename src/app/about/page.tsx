@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import Layout from '@/components/layout/Layout'
 import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
