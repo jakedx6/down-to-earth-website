@@ -68,9 +68,13 @@ export default function Footer() {
           <p className="text-primary-foreground/70 text-sm">
             © 2025 Down to Earth Farmstead. All rights reserved.
           </p>
-          <div className="flex items-center text-primary-foreground/70 text-sm mt-4 sm:mt-0">
-            <MapPin className="h-4 w-4 mr-1" />
-            Iowa Farm
+          <div className="flex flex-col sm:flex-row gap-4 text-primary-foreground/70 text-sm mt-4 sm:mt-0">
+            <div className="flex items-center">
+              <Mail className="h-4 w-4 mr-1" />
+              <a href="mailto:info@downtoearthfarmstead.com" className="hover:text-white transition-colors">
+                info@downtoearthfarmstead.com
+              </a>
+            </div>
           </div>
         </div>
       </div>

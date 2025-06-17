@@ -80,6 +80,14 @@ export default function FeaturedProducts() {
           ))}
         </div>
 
+        {/* Shipping Info */}
+        <div className="bg-gray-50 rounded-lg p-6 mb-8 text-center">
+          <p className="text-contrast-medium-light">
+            <span className="font-semibold text-contrast-high-light">Shipping Available:</span> We can ship our freeze-dried products nationwide upon request. 
+            Fresh products are available for local pickup only.
+          </p>
+        </div>
+
         {/* CTA */}
         <div className="text-center">
           <Button asChild size="lg">

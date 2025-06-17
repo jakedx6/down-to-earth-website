@@ -105,6 +105,7 @@ export default function ContactPage() {
                         <option value="general">General Inquiry</option>
                         <option value="fresh-eggs">Fresh Eggs Order</option>
                         <option value="freeze-dried">Freeze-Dried Products</option>
+                        <option value="shipping">Shipping Request</option>
                         <option value="custom-service">Custom Freeze-Drying Service</option>
                         <option value="wholesale">Wholesale/Bulk Orders</option>
                         <option value="other">Other</option>
@@ -178,6 +179,15 @@ export default function ContactPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent className="space-y-3">
+                    <div className="flex items-center">
+                      <Mail className="mr-3 h-4 w-4 text-primary" />
+                      <a 
+                        href="mailto:info@downtoearthfarmstead.com" 
+                        className="text-contrast-medium-light hover:text-primary transition-colors"
+                      >
+                        info@downtoearthfarmstead.com
+                      </a>
+                    </div>
                     <div className="flex items-center">
                       <Phone className="mr-3 h-4 w-4 text-primary" />
                       <span className="text-contrast-medium-light">Contact form preferred</span>
@@ -266,10 +276,10 @@ export default function ContactPage() {
             <Card className="border">
               <CardContent className="p-6">
                 <h3 className="font-semibold text-contrast-high-light mb-2">
-                  Do you deliver?
+                  Do you deliver or ship?
                 </h3>
                 <p className="text-contrast-medium-light text-sm">
-                  Yes! We offer local delivery within 15 miles of our farm. Delivery fees may apply based on distance.
+                  Yes! Local delivery within 15 miles for all products. We also ship freeze-dried products nationwide upon request.
                 </p>
               </CardContent>
             </Card>
@@ -292,6 +302,28 @@ export default function ContactPage() {
                 </h3>
                 <p className="text-contrast-medium-light text-sm">
                   Absolutely! We love showing people our operation. Farm visits are by appointment only for the safety of our animals.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-contrast-high-light mb-2">
+                  Do you ship freeze-dried products?
+                </h3>
+                <p className="text-contrast-medium-light text-sm">
+                  Yes! We can ship our freeze-dried eggs and strawberries nationwide. Contact us for shipping rates and to place your order.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card className="border">
+              <CardContent className="p-6">
+                <h3 className="font-semibold text-contrast-high-light mb-2">
+                  Why can&apos;t fresh products be shipped?
+                </h3>
+                <p className="text-contrast-medium-light text-sm">
+                  Fresh eggs require refrigeration and have a shorter shelf life, making them best suited for local pickup or delivery to ensure quality.
                 </p>
               </CardContent>
             </Card>

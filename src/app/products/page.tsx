@@ -207,9 +207,36 @@ export default function ProductsPage() {
             ))}
           </div>
 
-          {/* Additional Products Info */}
+          {/* Shipping Information */}
           <div className="mt-16 text-center">
             <div className="bg-gray-50 rounded-lg p-8 mb-8">
+              <h3 className="text-xl font-semibold text-contrast-high-light mb-4">
+                Shipping & Availability
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                <div>
+                  <h4 className="font-semibold text-contrast-high-light mb-2">Freeze-Dried Products</h4>
+                  <ul className="space-y-1 text-contrast-medium-light">
+                    <li>• Nationwide shipping available upon request</li>
+                    <li>• Perfect for long-distance orders</li>
+                    <li>• Lightweight and compact packaging</li>
+                    <li>• 25-year shelf life ensures safe delivery</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-contrast-high-light mb-2">Fresh Products</h4>
+                  <ul className="space-y-1 text-contrast-medium-light">
+                    <li>• Local pickup available</li>
+                    <li>• Iowa area delivery options</li>
+                    <li>• Contact us for scheduling</li>
+                    <li>• Best quality when fresh</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Products Info */}
+            <div className="bg-white border rounded-lg p-8 mb-8">
               <h3 className="text-xl font-semibold text-contrast-high-light mb-4">
                 Additional Products & Services
               </h3>
