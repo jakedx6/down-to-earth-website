@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { Button } from '@/components/ui/button'
-import { Mail, MapPin } from 'lucide-react'
+import { Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
