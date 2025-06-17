@@ -25,6 +25,12 @@ export default function ContactPage() {
       formData.forEach((value, key) => {
         formEntries[key] = value.toString()
       })
+
+      // Check honeypot field - if filled, it's likely spam
+      if (formEntries['bot-field']) {
+        console.log('Bot detected via honeypot field')
+        return
+      }
       
       const response = await fetch('/__forms.html', {
         method: 'POST',
@@ -89,6 +95,13 @@ export default function ContactPage() {
                   >
                     {/* Hidden field for Netlify Forms */}
                     <input type="hidden" name="form-name" value="contact" />
+                    
+                    {/* Honeypot field for spam protection */}
+                    <p style={{ display: 'none' }}>
+                      <label>
+                        Don't fill this out if you're human: <input name="bot-field" />
+                      </label>
+                    </p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">

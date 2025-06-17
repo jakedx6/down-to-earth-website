@@ -5,8 +5,11 @@
 </head>
 <body>
   <!-- Static form for Netlify detection -->
-  <form name="contact" data-netlify="true" hidden>
+  <form name="contact" data-netlify="true" netlify-honeypot="bot-field" hidden>
     <input type="hidden" name="form-name" value="contact" />
+    <p style="display: none;">
+      <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+    </p>
     <input name="name" />
     <input name="email" />
     <input name="phone" />
