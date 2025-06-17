@@ -10,7 +10,7 @@ const values = [
   {
     icon: Award,
     title: 'Honest Quality',
-    description: 'We grow and raise food we&apos;re proud to feed our own family. Zero compromises.',
+    description: 'We grow and raise food we\'re proud to feed our own family. Zero compromises.',
   },
   {
     icon: Sparkles,
@@ -20,7 +20,7 @@ const values = [
   {
     icon: Map,
     title: 'Iowa Roots',
-    description: '100% Iowa-grown, and proud to be part of this state&apos;s incredible agricultural story.',
+    description: '100% Iowa-grown, and proud to be part of this state\'s incredible agricultural story.',
   }
 ]
 
@@ -28,7 +28,7 @@ export default function AboutPage() {
   return (
     <Layout>
       {/* Clean Hero Section */}
-      <section className="bg-gradient-to-b from-gray-50 to-white py-20">
+      <section className="bg-gradient-to-b from-gray-50 to-white py-20 pb-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Badge variant="outline" className="mb-4">
             About Our Farm
@@ -37,13 +37,13 @@ export default function AboutPage() {
             It All Started on 6 Acres in Iowa
           </h1>
           <p className="text-xl text-contrast-medium-light max-w-3xl mx-auto">
-            Just south of Des Moines, you&apos;ll find us—Down to Earth Farmstead. We&apos;re a family on a small 6-acre plot with a big idea.
+            Just south of Des Moines, you'll find us—Down to Earth Farmstead. We're a family on a small 6-acre plot with a big idea.
           </p>
         </div>
       </section>
 
       {/* The Problem Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 pt-0 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="relative h-96 rounded-lg overflow-hidden border">
@@ -64,13 +64,13 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-lg text-contrast-medium-light">
                 <p>
-                  We&apos;ve been there. You get excited at the farmers market, loading up on beautiful, fresh produce with the best intentions. But life happens. The week gets busy, plans change, and that gorgeous food wilts in the crisper drawer.
+                  We've been there. You get excited at the farmers market, loading up on beautiful, fresh produce with the best intentions. But life happens. The week gets busy, plans change, and that gorgeous food wilts in the crisper drawer.
                 </p>
                 <p>
-                  It&apos;s a frustrating cycle of waste. We knew there had to be a better way to bridge the gap between loving farm-fresh food and living a modern, unpredictable life.
+                  It's a frustrating cycle of waste. We knew there had to be a better way to bridge the gap between loving farm-fresh food and living a modern, unpredictable life.
                 </p>
                 <p className="font-medium text-contrast-high-light">
-                  We wanted to offer food you could count on—whether for tonight&apos;s dinner or for an emergency down the road.
+                  We wanted to offer food you could count on—whether for tonight's dinner or for an emergency down the road.
                 </p>
               </div>
             </div>
@@ -91,13 +91,13 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-4 text-lg text-contrast-medium-light">
                 <p>
-                  That&apos;s why we do what we do. We provide two sides of the same coin: the immediate joy of fresh-from-the-farm eggs and seasonal produce, and the peace of mind that comes with expertly preserved foods.
+                  That's why we do what we do. We provide two sides of the same coin: the immediate joy of fresh-from-the-farm eggs and seasonal produce, and the peace of mind that comes with expertly preserved foods.
                 </p>
                 <p>
-                  Our state-of-the-art freeze-drying process locks in the flavor and nutrients of our harvest for up to 25 years. It&apos;s the same wholesome food, with zero preservatives, simply made to last.
+                  Our state-of-the-art freeze-drying process locks in the flavor and nutrients of our harvest for up to 25 years. It's the same wholesome food, with zero preservatives, simply made to last.
                 </p>
                 <p className="font-medium text-contrast-high-light">
-                  It&apos;s your pantry&apos;s secret weapon for quality ingredients that are ready when you are.
+                  It's your pantry's secret weapon for quality ingredients that are ready when you are.
                 </p>
               </div>
             </div>
@@ -125,7 +125,7 @@ export default function AboutPage() {
               Growing From the Ground Up, Our Way
             </h2>
             <p className="text-lg text-contrast-medium-light max-w-3xl mx-auto">
-              Being a small, owner-funded farmstead means we don&apos;t answer to investors or corporate headquarters. Our only boss is our commitment to you and to the land we&apos;re working.
+              Being a small, owner-funded farmstead means we don't answer to investors or corporate headquarters. Our only boss is our commitment to you and to the land we're working.
             </p>
           </div>
 
@@ -192,14 +192,14 @@ export default function AboutPage() {
                 From Our Family to Yours
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold text-contrast-high-light mb-6">
-                We&apos;re Not Just Another Farm
+                We're Not Just Another Farm
               </h2>
               <div className="space-y-4 text-lg text-contrast-medium-light">
                 <p>
-                  We&apos;re your neighbors, working hard to bring practical, sustainable, and delicious food from our home to yours. We&apos;re in the early days, with our hands in the dirt, building a farm that we hope brings real value to real people.
+                  We're your neighbors, working hard to bring practical, sustainable, and delicious food from our home to yours. We're in the early days, with our hands in the dirt, building a farm that we hope brings real value to real people.
                 </p>
                 <p>
-                  This freedom allows us to focus on what truly matters: growing food we&apos;re proud to feed our own family, innovating with real solutions, and staying true to our Iowa roots.
+                  This freedom allows us to focus on what truly matters: growing food we're proud to feed our own family, innovating with real solutions, and staying true to our Iowa roots.
                 </p>
                 <p className="font-medium text-contrast-high-light">
                   Thanks for being a part of our story.

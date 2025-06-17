@@ -1,10 +1,13 @@
+'use client'
+
 import Layout from '@/components/layout/Layout'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowRight, Phone, Check } from 'lucide-react'
+import { ArrowRight, Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react'
+import { useState } from 'react'
 
 const products = [
   {
@@ -34,6 +37,23 @@ const products = [
     price: '$12/bag',
     excerpt: 'Sweet Iowa strawberries freeze-dried at peak ripeness. Just strawberries - no added sugar or ingredients. Perfect for snacking, baking, or adding to cereals and smoothies.',
     image: '/assets/Photos/20250409_172514.jpg',
+    processImages: [
+      {
+        src: '/assets/Photos/strawberry-harvest.jpg',
+        alt: 'Fresh strawberries being harvested',
+        caption: 'Hand-picked strawberries ready for processing'
+      },
+      {
+        src: '/assets/Photos/strawberry-field.jpg',
+        alt: 'Iowa strawberry field during harvest season',
+        caption: 'Strawberries at peak ripeness'
+      },
+      {
+        src: '/assets/Photos/strawberry-tray.jpg',
+        alt: 'Strawberries arranged on freeze-drying trays',
+        caption: 'Strawberries prepared for freeze-drying'
+      }
+    ],
     category: 'Preserved Products',
     inStock: true,
     featured: true,
@@ -72,6 +92,84 @@ const products = [
   }
 ]
 
+function ProductImageCarousel({ product }: { product: typeof products[0] }) {
+  const allImages = product.processImages 
+    ? [{ src: product.image, alt: product.title, caption: 'Final Product' }, ...product.processImages]
+    : [{ src: product.image, alt: product.title, caption: 'Product Image' }]
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) => (prev + 1) % allImages.length)
+  }
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length)
+  }
+
+  if (allImages.length === 1) {
+    return (
+      <div className="relative h-64 bg-gray-100">
+        <Image
+          src={allImages[0].src}
+          alt={allImages[0].alt}
+          fill
+          className="object-cover"
+        />
+      </div>
+    )
+  }
+
+  return (
+    <div className="relative h-64 bg-gray-100 group">
+      <Image
+        src={allImages[currentImageIndex].src}
+        alt={allImages[currentImageIndex].alt}
+        fill
+        className="object-cover transition-opacity duration-300"
+      />
+      
+      {/* Navigation arrows */}
+      <button
+        onClick={prevImage}
+        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/70"
+        aria-label="Previous image"
+      >
+        <ChevronLeft className="w-4 h-4" />
+      </button>
+      
+      <button
+        onClick={nextImage}
+        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-black/70"
+        aria-label="Next image"
+      >
+        <ChevronRight className="w-4 h-4" />
+      </button>
+
+      {/* Dots indicator */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex space-x-1">
+        {allImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentImageIndex(index)}
+            className={`w-2 h-2 rounded-full transition-colors duration-200 ${
+              index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+            }`}
+            aria-label={`Go to image ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Image caption */}
+      <div className="absolute bottom-6 left-2 right-2 text-center">
+        <span className="bg-black/50 text-white text-xs px-2 py-1 rounded">
+          {allImages[currentImageIndex].caption}
+        </span>
+      </div>
+    </div>
+  )
+}
+
 export default function ProductsPage() {
   return (
     <Layout>
@@ -92,44 +190,27 @@ export default function ProductsPage() {
       </section>
 
       {/* Products Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 pt-0 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <Badge variant="secondary" className="mb-4">
-              Our Product Range
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold text-contrast-high-light mb-4">
-              Quality You Can Trust
-            </h2>
-            <p className="text-lg text-contrast-medium-light max-w-2xl mx-auto">
-              Each product is carefully crafted with quality and sustainability in mind, 
-              bringing you the best of Iowa farm life with modern preservation techniques.
-            </p>
-          </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {products.map((product) => (
-              <Card key={product.id} className="overflow-hidden border hover:border-gray-300 transition-colors duration-300">
-                {/* Product Image */}
-                <div className="relative h-64 bg-gray-100">
-                  <Image
-                    src={product.image}
-                    alt={product.title}
-                    fill
-                    className="object-cover"
-                  />
+              <Card key={product.id} className="overflow-hidden border hover:border-gray-300 transition-colors duration-300 pt-0 flex flex-col h-full">
+                {/* Product Image Carousel */}
+                <div className="relative">
+                  <ProductImageCarousel product={product} />
                   {!product.inStock && (
-                    <Badge variant="destructive" className="absolute top-4 left-4">
+                    <Badge variant="destructive" className="absolute top-4 left-4 z-10">
                       Out of Stock
                     </Badge>
                   )}
                   {product.badge && (
-                    <Badge variant="secondary" className="absolute top-4 left-4">
+                    <Badge variant="secondary" className="absolute top-4 left-4 z-10">
                       {product.badge}
                     </Badge>
                   )}
                   {product.featured && (
-                    <Badge variant="secondary" className="absolute top-4 right-4">
+                    <Badge variant="secondary" className="absolute top-4 right-4 z-10">
                       Featured
                     </Badge>
                   )}
@@ -137,128 +218,76 @@ export default function ProductsPage() {
 
                 {/* Product Info */}
                 <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <CardTitle className="text-xl text-contrast-high-light">
-                      {product.title}
-                    </CardTitle>
-                    <Badge variant="secondary" className="text-lg font-bold px-3 py-1">
-                      {product.price}
-                    </Badge>
-                  </div>
+                  <CardTitle className="text-xl text-contrast-high-light mb-2">
+                    {product.title}
+                  </CardTitle>
+                  <Badge variant="secondary" className="text-lg font-bold px-3 py-1 w-fit">
+                    {product.price}
+                  </Badge>
                 </CardHeader>
 
-                <CardContent className="space-y-4">
-                  <p className="text-contrast-medium-light">{product.excerpt}</p>
+                <CardContent className="flex-grow flex flex-col">
+                  <div className="space-y-4 flex-grow">
+                    <p className="text-contrast-medium-light">{product.excerpt}</p>
 
-                  {/* Product Details */}
-                  <div className="space-y-2 text-sm">
-                    {product.weight && (
-                      <div className="flex justify-between">
-                        <span className="text-contrast-medium-light">Weight:</span>
-                        <span className="text-contrast-high-light">{product.weight}</span>
+                    {/* Product Details */}
+                    <div className="space-y-2 text-sm">
+                      {product.weight && (
+                        <div className="flex justify-between">
+                          <span className="text-contrast-medium-light">Weight:</span>
+                          <span className="text-contrast-high-light">{product.weight}</span>
+                        </div>
+                      )}
+                      {product.shelfLife && (
+                        <div className="flex justify-between">
+                          <span className="text-contrast-medium-light">Shelf Life:</span>
+                          <span className="text-contrast-high-light">{product.shelfLife}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {/* Features */}
+                    {product.features.length > 0 && (
+                      <div>
+                        <ul className="space-y-2">
+                          {product.features.slice(0, 3).map((feature, featureIndex) => (
+                            <li key={featureIndex} className="flex items-center text-sm text-contrast-medium-light">
+                              <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
                       </div>
                     )}
-                    {product.shelfLife && (
-                      <div className="flex justify-between">
-                        <span className="text-contrast-medium-light">Shelf Life:</span>
-                        <span className="text-contrast-high-light">{product.shelfLife}</span>
-                      </div>
+
+                    {/* Learn More Link for Freeze-Dried Products */}
+                    {product.learnMoreLink && (
+                      <Link 
+                        href={product.learnMoreLink} 
+                        className="text-sm text-primary hover:underline flex items-center justify-center"
+                      >
+                        Learn about freeze-drying
+                        <ArrowRight className="ml-1 h-3 w-3" />
+                      </Link>
                     )}
                   </div>
 
-                  {/* Features */}
-                  {product.features.length > 0 && (
-                    <div>
-                      <ul className="space-y-2">
-                        {product.features.slice(0, 3).map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm text-contrast-medium-light">
-                            <Check className="w-4 h-4 text-primary mr-2 flex-shrink-0" />
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  )}
-
-                  {/* Learn More Link for Freeze-Dried Products */}
-                  {product.learnMoreLink && (
-                    <Link 
-                      href={product.learnMoreLink} 
-                      className="text-sm text-primary hover:underline flex items-center justify-center"
+                  {/* Contact Button - Always at bottom */}
+                  <div className="mt-4">
+                    <Button 
+                      className="w-full"
+                      variant={product.inStock ? "default" : "outline"}
+                      disabled={!product.inStock}
+                      asChild
                     >
-                      Learn about freeze-drying
-                      <ArrowRight className="ml-1 h-3 w-3" />
-                    </Link>
-                  )}
-
-                  {/* Contact Button */}
-                  <Button 
-                    className="w-full"
-                    variant={product.inStock ? "default" : "outline"}
-                    disabled={!product.inStock}
-                    asChild
-                  >
-                    <Link href="/contact">
-                      {product.inStock ? 'Contact to Order' : 'Currently Unavailable'}
-                    </Link>
-                  </Button>
+                      <Link href="/contact">
+                        {product.inStock ? 'Contact to Order' : 'Currently Unavailable'}
+                      </Link>
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}
-          </div>
-
-          {/* Shipping Information */}
-          <div className="mt-16 text-center">
-            <div className="bg-gray-50 rounded-lg p-8 mb-8">
-              <h3 className="text-xl font-semibold text-contrast-high-light mb-4">
-                Shipping & Availability
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div>
-                  <h4 className="font-semibold text-contrast-high-light mb-2">Freeze-Dried Products</h4>
-                  <ul className="space-y-1 text-contrast-medium-light">
-                    <li>• Nationwide shipping available upon request</li>
-                    <li>• Perfect for long-distance orders</li>
-                    <li>• Lightweight and compact packaging</li>
-                    <li>• 25-year shelf life ensures safe delivery</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-contrast-high-light mb-2">Fresh Products</h4>
-                  <ul className="space-y-1 text-contrast-medium-light">
-                    <li>• Local pickup available</li>
-                    <li>• Iowa area delivery options</li>
-                    <li>• Contact us for scheduling</li>
-                    <li>• Best quality when fresh</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            {/* Additional Products Info */}
-            <div className="bg-white border rounded-lg p-8 mb-8">
-              <h3 className="text-xl font-semibold text-contrast-high-light mb-4">
-                Additional Products & Services
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <div>
-                  <h4 className="font-semibold text-contrast-high-light mb-2">Coming Soon</h4>
-                  <ul className="space-y-1 text-contrast-medium-light">
-                    <li>• Fresh garlic (seasonal)</li>
-                    <li>• Seasonal vegetables</li>
-                    <li>• Herbs and specialty produce</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-contrast-high-light mb-2">Custom Services</h4>
-                  <ul className="space-y-1 text-contrast-medium-light">
-                    <li>• Custom freeze-drying services</li>
-                    <li>• Bulk order processing</li>
-                    <li>• Food preservation consultation</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </section>
