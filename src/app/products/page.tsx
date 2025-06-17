@@ -8,44 +8,67 @@ import { ArrowRight, Phone, Check } from 'lucide-react'
 
 const products = [
   {
+    id: 'freeze-dried-eggs',
+    title: 'Freeze-Dried Eggs',
+    price: '$12/dozen',
+    excerpt: 'Premium freeze-dried eggs with 25-year shelf life. Perfect for emergency preparedness, camping, or convenient cooking. Retains 97% of nutrients.',
+    image: '/assets/Photos/PXL_20250513_211446827.jpg',
+    category: 'Preserved Products',
+    inStock: true,
+    featured: true,
+    weight: '4 oz (equivalent to 1 dozen)',
+    shelfLife: '25 years unopened',
+    features: [
+      '25-year shelf life',
+      '97% nutrient retention',
+      'No preservatives or additives',
+      'Lightweight for storage/travel',
+      'Simple reconstitution with water'
+    ],
+    tags: ['freeze-dried', 'eggs', 'protein', 'long-term-storage'],
+    learnMoreLink: '/what-is-freeze-drying'
+  },
+  {
+    id: 'freeze-dried-strawberries',
+    title: 'Freeze-Dried Strawberries',
+    price: '$12/bag',
+    excerpt: 'Sweet Iowa strawberries freeze-dried at peak ripeness. Just strawberries - no added sugar or ingredients. Perfect for snacking, baking, or adding to cereals and smoothies.',
+    image: '/assets/Photos/20250409_172514.jpg',
+    category: 'Preserved Products',
+    inStock: true,
+    featured: true,
+    weight: '2 oz',
+    shelfLife: '25 years unopened',
+    features: [
+      'In-season Iowa strawberries',
+      'Crispy, sweet flavor',
+      'No added sugar or preservatives',
+      'Perfect healthy snack',
+      'Versatile ingredient'
+    ],
+    tags: ['freeze-dried', 'fruit', 'strawberries', 'seasonal', 'new'],
+    badge: 'NEW',
+    learnMoreLink: '/what-is-freeze-drying'
+  },
+  {
     id: 'farm-fresh-eggs',
-    title: 'Farm Fresh Eggs',
-    price: '$5',
-    excerpt: 'One dozen fresh eggs from our free-range hens. Collected daily and delivered fresh to ensure the highest quality and taste.',
-    image: '/assets/Photos/20250409_171548.jpg',
+    title: 'Fresh Farm Eggs',
+    price: '$5/dozen',
+    excerpt: 'One dozen fresh eggs from our free-range hens. Collected daily for peak freshness, with rich golden yolks that showcase our hens\' natural diet.',
+    image: '/assets/Photos/PXL_20250513_211913056.MP.jpg',
     category: 'Fresh Products',
     inStock: true,
     featured: true,
     weight: '1 dozen',
     shelfLife: '3-4 weeks refrigerated',
     features: [
-      'Free-range hens',
-      'Collected daily',
+      'Free-range, pasture-raised hens',
+      'Collected fresh daily',
       'No hormones or antibiotics',
-      'Rich, golden yolks',
-      'Local Iowa farm'
+      'Rich, golden-orange yolks',
+      'Superior taste and nutrition'
     ],
     tags: ['fresh', 'eggs', 'protein', 'daily']
-  },
-  {
-    id: 'freeze-dried-eggs',
-    title: 'Freeze-Dried Eggs (1 Dozen)',
-    price: '$24',
-    excerpt: 'One dozen eggs freeze-dried to perfection. 25-year shelf life with 97% nutrient retention. Just add water to restore.',
-    image: '/assets/Photos/PXL_20250513_211446827.jpg',
-    category: 'Preserved Products',
-    inStock: true,
-    featured: true,
-    weight: '4 oz',
-    shelfLife: '25 years',
-    features: [
-      '25-year shelf life',
-      '97% nutrient retention',
-      'No preservatives added',
-      'Lightweight and compact',
-      'Easy to reconstitute'
-    ],
-    tags: ['freeze-dried', 'eggs', 'protein', 'long-term-storage']
   }
 ]
 
@@ -100,6 +123,11 @@ export default function ProductsPage() {
                       Out of Stock
                     </Badge>
                   )}
+                  {product.badge && (
+                    <Badge variant="secondary" className="absolute top-4 left-4">
+                      {product.badge}
+                    </Badge>
+                  )}
                   {product.featured && (
                     <Badge variant="secondary" className="absolute top-4 right-4">
                       Featured
@@ -152,6 +180,17 @@ export default function ProductsPage() {
                     </div>
                   )}
 
+                  {/* Learn More Link for Freeze-Dried Products */}
+                  {product.learnMoreLink && (
+                    <Link 
+                      href={product.learnMoreLink} 
+                      className="text-sm text-primary hover:underline flex items-center justify-center"
+                    >
+                      Learn about freeze-drying
+                      <ArrowRight className="ml-1 h-3 w-3" />
+                    </Link>
+                  )}
+
                   {/* Contact Button */}
                   <Button 
                     className="w-full"
@@ -176,7 +215,7 @@ export default function ProductsPage() {
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
                 <div>
-                  <h4 className="font-semibold text-contrast-high-light mb-2">Seasonal Fresh Products</h4>
+                  <h4 className="font-semibold text-contrast-high-light mb-2">Coming Soon</h4>
                   <ul className="space-y-1 text-contrast-medium-light">
                     <li>• Fresh garlic (seasonal)</li>
                     <li>• Seasonal vegetables</li>
