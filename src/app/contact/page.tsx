@@ -20,11 +20,16 @@ export default function ContactPage() {
 
     try {
       const formData = new FormData(event.currentTarget)
+      const formEntries: Record<string, string> = {}
+      
+      formData.forEach((value, key) => {
+        formEntries[key] = value.toString()
+      })
       
       const response = await fetch('/contact-form.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString(),
+        body: new URLSearchParams(formEntries).toString(),
       })
 
       if (response.ok) {
