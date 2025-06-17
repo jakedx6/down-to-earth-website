@@ -10,12 +10,32 @@
     <p style="display: none;">
       <label>Don't fill this out if you're human: <input name="bot-field" /></label>
     </p>
-    <input name="name" />
-    <input name="email" />
-    <input name="phone" />
-    <input name="service-type" />
-    <input name="subject" />
-    <textarea name="message"></textarea>
+    
+    <label for="name">Name *</label>
+    <input id="name" name="name" required />
+    
+    <label for="email">Email *</label>
+    <input id="email" name="email" type="email" required />
+    
+    <label for="phone">Phone Number</label>
+    <input id="phone" name="phone" type="tel" />
+    
+    <label for="service-type">What can we help you with?</label>
+    <select id="service-type" name="service-type">
+      <option value="general">General Inquiry</option>
+      <option value="fresh-eggs">Fresh Eggs Order</option>
+      <option value="freeze-dried">Freeze-Dried Products</option>
+      <option value="shipping">Shipping Request</option>
+      <option value="custom-service">Custom Freeze-Drying Service</option>
+      <option value="wholesale">Wholesale/Bulk Orders</option>
+      <option value="other">Other</option>
+    </select>
+    
+    <label for="subject">Subject</label>
+    <input id="subject" name="subject" />
+    
+    <label for="message">Message *</label>
+    <textarea id="message" name="message" required></textarea>
   </form>
 </body>
 </html>
