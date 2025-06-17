@@ -26,7 +26,7 @@ export default function ContactPage() {
         formEntries[key] = value.toString()
       })
       
-      const response = await fetch('/contact-form.html', {
+      const response = await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: new URLSearchParams(formEntries).toString(),
@@ -89,9 +89,6 @@ export default function ContactPage() {
                   >
                     {/* Hidden field for Netlify Forms */}
                     <input type="hidden" name="form-name" value="contact" />
-                    
-                    {/* Hidden honeypot field for bot protection */}
-                    <input name="bot-field" style={{ display: 'none' }} />
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">

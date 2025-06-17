@@ -135,3 +135,6 @@ git branch -d feature/your-feature-name
 🤖 Generated with [Claude Code](https://claude.ai/code)
 Co-Authored-By: Claude <noreply@anthropic.com>
 ```
+
+## Memories
+- Test build locally before pushing to git
