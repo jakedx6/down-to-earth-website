@@ -24,7 +24,7 @@ export default function ContactPage() {
       const response = await fetch('/contact-form.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData as any).toString(),
+        body: new URLSearchParams(formData).toString(),
       })
 
       if (response.ok) {
