@@ -7,7 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Phone, Check, ChevronLeft, ChevronRight } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 const products = [
   {
@@ -98,6 +98,8 @@ function ProductImageCarousel({ product }: { product: typeof products[0] }) {
     : [{ src: product.image, alt: product.title, caption: 'Product Image' }]
   
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const touchStartX = useRef<number | null>(null)
+  const touchEndX = useRef<number | null>(null)
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % allImages.length)
@@ -105,6 +107,32 @@ function ProductImageCarousel({ product }: { product: typeof products[0] }) {
 
   const prevImage = () => {
     setCurrentImageIndex((prev) => (prev - 1 + allImages.length) % allImages.length)
+  }
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.targetTouches[0].clientX
+  }
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.targetTouches[0].clientX
+  }
+
+  const handleTouchEnd = () => {
+    if (!touchStartX.current || !touchEndX.current) return
+    
+    const distance = touchStartX.current - touchEndX.current
+    const isLeftSwipe = distance > 50
+    const isRightSwipe = distance < -50
+
+    if (isLeftSwipe && allImages.length > 1) {
+      nextImage()
+    }
+    if (isRightSwipe && allImages.length > 1) {
+      prevImage()
+    }
+
+    touchStartX.current = null
+    touchEndX.current = null
   }
 
   if (allImages.length === 1) {
@@ -121,7 +149,12 @@ function ProductImageCarousel({ product }: { product: typeof products[0] }) {
   }
 
   return (
-    <div className="relative h-64 bg-gray-100 group">
+    <div 
+      className="relative h-64 bg-gray-100 group touch-pan-y"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <Image
         src={allImages[currentImageIndex].src}
         alt={allImages[currentImageIndex].alt}
