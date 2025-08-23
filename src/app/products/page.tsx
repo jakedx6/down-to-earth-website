@@ -13,7 +13,7 @@ const products = [
   {
     id: 'freeze-dried-eggs',
     title: 'Freeze-Dried Eggs',
-    price: '$12/dozen',
+    price: '$8/dozen',
     excerpt: 'Premium freeze-dried eggs with 25-year shelf life. Perfect for emergency preparedness, camping, or convenient cooking. Retains 97% of nutrients.',
     image: '/assets/Photos/PXL_20250513_211446827.jpg',
     category: 'Preserved Products',
@@ -34,7 +34,7 @@ const products = [
   {
     id: 'freeze-dried-strawberries',
     title: 'Freeze-Dried Strawberries',
-    price: '$12/bag',
+    price: '$8/bag',
     excerpt: 'Sweet Iowa strawberries freeze-dried at peak ripeness. Just strawberries - no added sugar or ingredients. Perfect for snacking, baking, or adding to cereals and smoothies.',
     image: '/assets/Photos/20250409_172514.jpg',
     processImages: [
@@ -69,26 +69,6 @@ const products = [
     tags: ['freeze-dried', 'fruit', 'strawberries', 'seasonal', 'new'],
     badge: 'NEW',
     learnMoreLink: '/what-is-freeze-drying'
-  },
-  {
-    id: 'farm-fresh-eggs',
-    title: 'Fresh Farm Eggs',
-    price: '$5/dozen',
-    excerpt: 'One dozen fresh eggs from our free-range hens. Collected daily for peak freshness, with rich golden yolks that showcase our hens\' natural diet.',
-    image: '/assets/Photos/PXL_20250513_211913056.MP.jpg',
-    category: 'Fresh Products',
-    inStock: true,
-    featured: true,
-    weight: '1 dozen',
-    shelfLife: '3-4 weeks refrigerated',
-    features: [
-      'Free-range, pasture-raised hens',
-      'Collected fresh daily',
-      'No hormones or antibiotics',
-      'Rich, golden-orange yolks',
-      'Superior taste and nutrition'
-    ],
-    tags: ['fresh', 'eggs', 'protein', 'daily']
   }
 ]
 
