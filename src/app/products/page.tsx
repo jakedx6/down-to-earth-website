@@ -69,6 +69,24 @@ const products = [
     tags: ['freeze-dried', 'fruit', 'strawberries', 'seasonal', 'new'],
     badge: 'NEW',
     learnMoreLink: '/what-is-freeze-drying'
+  },
+  {
+    id: 'farm-fresh-eggs',
+    title: 'Farm Fresh Eggs',
+    price: '$4/dozen',
+    excerpt: 'Fresh eggs from our free-range hens. Collected daily and perfect for all your cooking and baking needs.',
+    image: '/assets/Photos/Fresh-eggs.jpeg',
+    category: 'Fresh Products',
+    inStock: true,
+    featured: false,
+    features: [
+      'Collected daily from free-range hens',
+      'Rich, flavorful yolks',
+      'Perfect for cooking and baking',
+      'Local Iowa farm fresh',
+      'No hormones or antibiotics'
+    ],
+    tags: ['fresh', 'eggs', 'free-range', 'local']
   }
 ]
 

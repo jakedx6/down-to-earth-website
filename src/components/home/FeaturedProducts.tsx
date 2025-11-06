@@ -12,7 +12,7 @@ const featuredProducts = [
   {
     id: 'freeze-dried-eggs',
     name: 'Freeze-Dried Eggs',
-    price: '$12/dozen',
+    price: '$8/dozen',
     description: 'Premium freeze-dried eggs with 25-year shelf life. Perfect for emergency preparedness, camping, or convenient cooking.',
     image: '/assets/Photos/PXL_20250513_211446827.jpg',
     badge: 'Featured',
@@ -21,7 +21,7 @@ const featuredProducts = [
   {
     id: 'freeze-dried-strawberries',
     name: 'Freeze-Dried Strawberries',
-    price: '$12/bag',
+    price: '$8/bag',
     description: 'Sweet Iowa strawberries freeze-dried at peak ripeness. Just strawberries - no added sugar or ingredients.',
     image: '/assets/Photos/20250409_172514.jpg',
     processImages: [
@@ -46,10 +46,10 @@ const featuredProducts = [
   },
   {
     id: 'farm-fresh-eggs',
-    name: 'Fresh Farm Eggs',
-    price: '$5/dozen',
-    description: 'One dozen fresh eggs from our free-range hens. Collected daily for peak freshness, with rich golden yolks.',
-    image: '/assets/Photos/PXL_20250513_211913056.MP.jpg',
+    name: 'Farm Fresh Eggs',
+    price: '$4/dozen',
+    description: 'Fresh eggs from our free-range hens. Collected daily for peak freshness, with rich golden yolks.',
+    image: '/assets/Photos/Fresh-eggs.jpeg',
     badge: 'Daily Fresh',
     features: ['Free-range hens', 'Collected daily']
   }
