@@ -13,7 +13,7 @@ const products = [
   {
     id: 'freeze-dried-eggs',
     title: 'Freeze-Dried Eggs',
-    price: '$8/dozen',
+    price: '$8.50/dozen',
     excerpt: 'Premium freeze-dried eggs with 25-year shelf life. Perfect for emergency preparedness, camping, or convenient cooking. Retains 97% of nutrients.',
     image: '/assets/Photos/PXL_20250513_211446827.jpg',
     category: 'Preserved Products',
@@ -35,7 +35,7 @@ const products = [
   {
     id: 'freeze-dried-strawberries',
     title: 'Freeze-Dried Strawberries',
-    price: '$8/bag',
+    price: '$8.50/bag',
     excerpt: 'Sweet Iowa strawberries freeze-dried at peak ripeness. Just strawberries - no added sugar or ingredients. Perfect for snacking, baking, or adding to cereals and smoothies.',
     image: '/assets/Photos/20250409_172514.jpg',
     processImages: [

@@ -12,7 +12,7 @@ const featuredProducts = [
   {
     id: 'freeze-dried-eggs',
     name: 'Freeze-Dried Eggs',
-    price: '$8/dozen',
+    price: '$8.50/dozen',
     description: 'Premium freeze-dried eggs with 25-year shelf life. Perfect for emergency preparedness, camping, or convenient cooking.',
     image: '/assets/Photos/PXL_20250513_211446827.jpg',
     badge: 'Featured',
@@ -22,7 +22,7 @@ const featuredProducts = [
   {
     id: 'freeze-dried-strawberries',
     name: 'Freeze-Dried Strawberries',
-    price: '$8/bag',
+    price: '$8.50/bag',
     description: 'Sweet Iowa strawberries freeze-dried at peak ripeness. Just strawberries - no added sugar or ingredients.',
     image: '/assets/Photos/20250409_172514.jpg',
     processImages: [
