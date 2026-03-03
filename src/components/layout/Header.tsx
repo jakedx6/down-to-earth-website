@@ -3,9 +3,14 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useState } from 'react'
+import { usePathname } from 'next/navigation'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  const isActive = (href: string) =>
+    href === '/' ? pathname === '/' : pathname.startsWith(href)
 
   const navItems = [
     { href: '/', label: 'Home' },
@@ -37,7 +42,11 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="text-contrast-high-light hover:text-forest-700 font-semibold text-lg transition-colors duration-200 px-4 py-2 rounded-md hover:bg-gray-50"
+                className={`font-semibold text-lg transition-colors duration-200 px-4 py-2 border-b-2 ${
+                  isActive(item.href)
+                    ? 'text-primary border-primary'
+                    : 'text-contrast-high-light hover:text-primary border-transparent'
+                }`}
               >
                 {item.label}
               </Link>
@@ -81,7 +90,11 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="block px-3 py-3 text-contrast-high-light hover:text-forest-700 font-semibold text-lg transition-colors duration-200 rounded-md hover:bg-gray-50"
+                  className={`block px-3 py-3 font-semibold text-lg transition-colors duration-200 border-l-2 ${
+                    isActive(item.href)
+                      ? 'text-primary border-primary'
+                      : 'text-contrast-high-light hover:text-primary border-transparent'
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
