@@ -29,7 +29,8 @@ const products = [
       'Simple reconstitution with water'
     ],
     tags: ['freeze-dried', 'eggs', 'protein', 'long-term-storage'],
-    learnMoreLink: '/what-is-freeze-drying'
+    learnMoreLink: '/what-is-freeze-drying',
+    checkoutLink: 'https://link.waveapps.com/pbc8ye-w5ugnb'
   },
   {
     id: 'freeze-dried-strawberries',
@@ -68,7 +69,8 @@ const products = [
     ],
     tags: ['freeze-dried', 'fruit', 'strawberries', 'seasonal', 'new'],
     badge: 'NEW',
-    learnMoreLink: '/what-is-freeze-drying'
+    learnMoreLink: '/what-is-freeze-drying',
+    checkoutLink: 'https://link.waveapps.com/ykjm7v-wj9ppr'
   },
   {
     id: 'farm-fresh-eggs',
@@ -303,17 +305,23 @@ export default function ProductsPage() {
                     )}
                   </div>
 
-                  {/* Contact Button - Always at bottom */}
+                  {/* Order Button - Always at bottom */}
                   <div className="mt-4">
-                    <Button 
+                    <Button
                       className="w-full"
                       variant={product.inStock ? "default" : "outline"}
                       disabled={!product.inStock}
                       asChild
                     >
-                      <Link href="/contact">
-                        {product.inStock ? 'Contact to Order' : 'Currently Unavailable'}
-                      </Link>
+                      {product.checkoutLink ? (
+                        <a href={product.checkoutLink} target="_blank" rel="noopener noreferrer">
+                          {product.inStock ? 'Order Now' : 'Currently Unavailable'}
+                        </a>
+                      ) : (
+                        <Link href="/contact">
+                          {product.inStock ? 'Contact to Order' : 'Currently Unavailable'}
+                        </Link>
+                      )}
                     </Button>
                   </div>
                 </CardContent>

@@ -16,7 +16,8 @@ const featuredProducts = [
     description: 'Premium freeze-dried eggs with 25-year shelf life. Perfect for emergency preparedness, camping, or convenient cooking.',
     image: '/assets/Photos/PXL_20250513_211446827.jpg',
     badge: 'Featured',
-    features: ['25-year shelf life', '97% nutrient retention']
+    features: ['25-year shelf life', '97% nutrient retention'],
+    checkoutLink: 'https://link.waveapps.com/pbc8ye-w5ugnb'
   },
   {
     id: 'freeze-dried-strawberries',
@@ -42,7 +43,8 @@ const featuredProducts = [
       }
     ],
     badge: 'NEW',
-    features: ['In-season Iowa strawberries', 'No preservatives']
+    features: ['In-season Iowa strawberries', 'No preservatives'],
+    checkoutLink: 'https://link.waveapps.com/ykjm7v-wj9ppr'
   },
   {
     id: 'farm-fresh-eggs',
@@ -214,6 +216,15 @@ export default function FeaturedProducts() {
                     </div>
                   ))}
                 </div>
+
+                {product.checkoutLink && (
+                  <Button className="w-full mt-4" asChild>
+                    <a href={product.checkoutLink} target="_blank" rel="noopener noreferrer">
+                      Order Now
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </a>
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
