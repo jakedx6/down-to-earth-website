@@ -217,13 +217,23 @@ export default function FeaturedProducts() {
                   ))}
                 </div>
 
-                {product.checkoutLink && (
+                {product.checkoutLink ? (
                   <Button className="w-full mt-4" asChild>
                     <a href={product.checkoutLink} target="_blank" rel="noopener noreferrer">
                       Order Now
                       <ArrowRight className="ml-2 h-4 w-4" />
                     </a>
                   </Button>
+                ) : (
+                  <div className="mt-4">
+                    <p className="text-xs text-contrast-medium-light text-center mb-2">Local pickup only</p>
+                    <Button className="w-full" asChild>
+                      <Link href="/contact">
+                        Contact to Order
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Link>
+                    </Button>
+                  </div>
                 )}
               </CardContent>
             </Card>
